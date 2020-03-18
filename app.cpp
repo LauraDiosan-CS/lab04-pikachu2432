@@ -4,6 +4,7 @@
 #include "TestS.h"
 #include "TestR.h"
 using namespace std;
+//ceva
 
 void afisare_meniu()
 {
