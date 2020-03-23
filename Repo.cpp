@@ -26,17 +26,44 @@ int Repo::get_size()
 	return this->size;
 }
 
+void Repo::set_size(int s)
+{
+	this->size = s;
+}
+
 void Repo::add_elem(Examen e)
 {
-	this->Examene[size] = e;
-	size++;
+	this->Examene[this->size] = e;
+	this->size++;
+}
+
+void Repo::upd_elem(Examen e1, Examen e2)
+{
+	for (int i = 0; i < this->size - 1; i++)
+		if (Examene[i] == e1)
+			Examene[i] = e2;
 }
 
 void Repo::elim_elem(Examen e)
 {
 	for (int i = 0; i < this->size - 1; i++) //suprascriere
-		if (Examene[i].get_nota() == e.get_nota() && Examene[i].get_data() == e.get_data() && Examene[i].get_nume() == e.get_nume())
+		if (Examene[i] == e)
+		{
 			for (int j = 0; j < this->size - 1; j++)
 				Examene[i] = Examene[i + 1];
-	size--;
+			this->size--;
+		}
+}
+
+int Repo::find_elem(Examen e)
+{
+	for (int i = 0; i < this->size - 1; i++) 
+		if (Examene[i] == e)
+			return i;
+	return -1;
+}
+
+Examen Repo::get_elem(int i)
+{
+	return Examene[i];
 }

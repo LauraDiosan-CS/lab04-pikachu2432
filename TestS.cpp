@@ -1,29 +1,33 @@
-#include <iostream>
-#include <string>
-#include <assert.h>
+#include "Repo.h"
 #include "Examen.h"
+#include "Service.h"
+#include <assert.h>
+#include <iostream>
 using namespace std;
 
 void test_e()
 {
-	Examen e1 = Examen();
-	assert(e1.get_nota() == 0);
-	assert(e1.get_data() == 0);
-	assert(e1.get_nume() == NULL);
+	Service s = Service();
 
-	Examen e2 = Examen(10, 15, "ion");
-	assert(e2.get_nota() == 10);
-	assert(e2.get_data() == 15);
-	char*e = e2.get_nume();//strcmp
-	assert(e[0] == 'i');
-	assert(e[1] == 'o');
-	assert(e[2] == 'n');
+	Examen e1 = Examen(7, 30, "mara");
+	Examen e2 = Examen(6, 15, "radu");
+	Examen e3 = Examen(9, 24, "luca");
 
-	Examen e3 = Examen(4, 5, "ana");
-	e3.set_nota(7);
-	e3.set_data(6);
-	assert(e3.get_nota() == 7);
-	assert(e3.get_data() == 6);
+	s.add(e1);
+	s.add(e2);
 
-	cout << "Testele pentru clasa Examen functioneaza." << endl;
+	assert(s.find(e2) == 1);
+	assert(s.find(e3) == -1);
+
+	s.upd(e1, e3);
+	assert(s.find(e3) == 0);
+
+	s.del(e2);
+
+	s.add(e1);
+	assert(s.get(0) == e3);
+	assert(s.get(1) == e2);
+	assert(s.get(2) == e1);
+
+	cout << "Testele pt. service functioneaza." << endl;
 }

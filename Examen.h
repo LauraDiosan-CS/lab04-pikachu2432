@@ -21,5 +21,7 @@ public:
 	void set_nume(char *n);
 
 	Examen& operator=(const Examen& e);
+
+	bool operator==(const Examen& e1) const;
 };
 

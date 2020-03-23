@@ -1,10 +1,10 @@
 #include <iostream>
 #include "Examen.h"
 #include "Repo.h"
+#include "TestE.h"
 #include "TestS.h"
 #include "TestR.h"
 using namespace std;
-//ceva
 
 void afisare_meniu()
 {
@@ -18,48 +18,54 @@ int main()
 {
 	test_e();
 	test_r();
-	cout << endl;
-	afisare_meniu();
+	test_s();
+	cout << endl; afisare_meniu(); cout << endl;
 	
-	int optiune;
-	cin >> optiune;
+	int optiune; cin >> optiune;
 	while (optiune >= 1 && optiune <= 2)
 	{
 		int nota, data;
-		char *nume;
-		nume = new char[10];
-		Examen e;
+		char *nume = new char[10];
 		Repo r;
 
 		if (optiune == 1)
 		{
-			cout << "Nume:" << endl;
-			cin >> nume;
-			cout << "Nota:" << endl;
-			cin >> nota;
-			cout << "data:" << endl;
-			cin >> data;
+			cout << "Nume: "; cin >> nume;
+			cout << "Nota: "; cin >> nota;
+			while (nota < 1 || nota > 10 )
+			{
+				cout << "Nota trebuie sa fie cuprinsa intre 1 si 10!" << endl << "Nota:";
+				cin >> nota;
+			}
+			cout << "Data: "; cin >> data;
+			while (data < 1 || data > 31)
+			{
+				cout << "Data trebuie sa fie cuprinsa intre 1 si 31!" << endl << "Data:";
+				cin >> data;
+			}
 
-			e = Examen(nota, data, nume);
-			
-			cout << endl << "Noua optiune:";
-			cin >> optiune;
+			Examen e = Examen(nota, data, nume);
+			r.add_elem(e);
+
+			cout << endl; afisare_meniu();
+			cout << endl << "Noua optiune:"; cin >> optiune;
 		}
 		if (optiune == 2)
 		{
-			r.add_elem(e);
 			for (int i = 0; i < r.get_size(); i++)
 			{
-				cout << "nume: " << r.get_all()->get_nume() << endl;
-				cout << "nota: " << r.get_all()->get_nota() << endl;
-				cout << "data: " << r.get_all()->get_data() << endl;
+				cout << "Nume: " << r.get_elem(i).get_nume() << endl;
+				cout << "Nota: " << r.get_elem(i).get_nota() << endl;
+				cout << "Data: " << r.get_elem(i).get_data() << endl;
+				cout << endl;
 			}
-			cout << endl << "Noua optiune:";
-			cin >> optiune;
+
+			cout << endl; afisare_meniu();
+			cout << endl << "Noua optiune:"; cin >> optiune;
 		}
 		else
 		{
-			e.~Examen();
+			//e.~Examen();
 			r.~Repo();
 		}
 	}

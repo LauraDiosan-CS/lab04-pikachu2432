@@ -51,14 +51,19 @@ void Examen::set_data(int d)
 }
 void Examen::set_nume(char *n)
 {
-	this->nume = n;//
+	this->nume = new char[strlen(n) + 1];
+	strcpy_s(this->nume, strlen(n) + 1, n);
 }
 
 Examen& Examen::operator=(const Examen& e)
 {
 	this->set_nota(e.nota);
 	this->set_data(e.data);
-	this->nume = new char[strlen(e.nume) + 1];
-	strcpy_s(this->nume, strlen(e.nume) + 1, e.nume);//
+	this->set_nume(e.nume);
 	return *this;
+}
+
+bool Examen::operator==(const Examen& rhs) const
+{
+	return (nota == rhs.nota) && (data == rhs.data) && (data == rhs.data);
 }
