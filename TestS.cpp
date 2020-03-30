@@ -4,7 +4,7 @@
 #include <assert.h>
 #include <iostream>
 using namespace std;
-
+/*
 void test_e()
 {
 	Service s = Service();
@@ -30,4 +30,4 @@ void test_e()
 	assert(s.get(2) == e1);
 
 	cout << "Testele pt. service functioneaza." << endl;
-}
+}*/

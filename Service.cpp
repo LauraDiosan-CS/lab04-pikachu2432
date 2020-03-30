@@ -1,5 +1,5 @@
 #include "Service.h"
-
+/*
 Service::Service()
 {
 	r = Repo();
@@ -24,4 +24,4 @@ int Service::find(Examen e)
 Examen Service::get(int i)
 {
 	return r.get_elem(i);
-}
+}*/

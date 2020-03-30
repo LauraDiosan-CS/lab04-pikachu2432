@@ -1,5 +1,6 @@
 #pragma once
 #include "Repo.h"
+/*/
 class Service
 {
 private:
@@ -13,5 +14,4 @@ public:
 	void del(Examen e);
 	int find(Examen e);
 	Examen get(int i);
-};
-
+};*/

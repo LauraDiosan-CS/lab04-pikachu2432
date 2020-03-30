@@ -39,25 +39,27 @@ void Repo::add_elem(Examen e)
 
 void Repo::upd_elem(Examen e1, Examen e2)
 {
-	for (int i = 0; i < this->size - 1; i++)
+	for (int i = 0; i < this->size; i++)
 		if (Examene[i] == e1)
 			Examene[i] = e2;
 }
 
 void Repo::elim_elem(Examen e)
 {
-	for (int i = 0; i < this->size - 1; i++) //suprascriere
+	for (int i = 0; i < this->size - 1; i++) 
 		if (Examene[i] == e)
 		{
-			for (int j = 0; j < this->size - 1; j++)
-				Examene[i] = Examene[i + 1];
+			for (int j = i; j < this->size - 1; j++)
+				Examene[j] = Examene[j + 1];
 			this->size--;
 		}
+	if (Examene[this->size - 1] == e)
+		this->size--;
 }
 
 int Repo::find_elem(Examen e)
 {
-	for (int i = 0; i < this->size - 1; i++) 
+	for (int i = 0; i < this->size; i++) 
 		if (Examene[i] == e)
 			return i;
 	return -1;
